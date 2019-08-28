@@ -1,0 +1,145 @@
+<div class="bg-primary text-white m-2 p-2">
+    there are {{ repository.getProduct().length}} products in the repository.
+</div>
+
+
+<div>
+
+        interpolation:<h2> {{product.name}}</h2>
+    property-binding: <h2 [textContent]="product.name"></h2>
+
+    <img src="assets/img{{product.imageUrl}}" > <!-- interpolation -->
+    <br>
+    <img [src]="product.imageUrl">                  <!-- property binding -->
+</div>
+
+
+   [class]
+
+<div class="text-center" [class]="getClasses(1)">    <!-- BU DURUMDA TEXT-CENTER CLASSINI GÖRMEYECEK PROGRAM GETCLASSES ÇALIŞACAK -->
+    katalogdaki ilk ürün {{repository.getProductById(1).name}}
+</div>
+
+<div [class]="getClasses(2)">
+    katalogdaki ikinci ürün {{repository.getProductById(2).name}}
+</div>
+<!-- 
+<button class="btn btn-primary" [class]="disable">submit</button>    burada button classı otomatikman true olur (disable=true; oldugu icin)-->
+
+
+<button class="btn btn-primary" [class.disable]="disable">submit</button> <!-- disable true ise disable classı eklenir. -->
+
+    <br>
+
+    [ngClass] ------ 
+
+<div class="m-2 p-2" [ngClass]="getClassMap(1)"  >
+
+    katalogdaki ilk ürün {{repository.getProductById(1).name}}
+    <span [style.color]="color" [style.fontSize]="fontSize">ilk span </span>
+    <!-- çok styleBinding bu şekilde yapılıyor. -->
+
+</div>
+
+
+<div class="m-2 p-2" [ngClass]="getClassMap(2)">
+
+    katalogdaki ikinci ürün {{repository.getProductById(2).name}}
+    <span  [ngStyle]="getStyles2()">ikinci span</span>
+
+</div>
+
+
+
+<div style="font-size:25px;">event binding  {{title}}</div>
+
+
+<button (click)="onSubmit($event)">submit</button>
+
+
+<div (click)="divClick()"  [style.color]="color"> xxxxxxxxxxxxxxxxxxxxxxxxxx </div>;
+
+
+
+-----------------KEYUP-------------------------------
+
+<div>{{tus}}</div>
+<div>{{value}}</div>
+
+<input (keyup)="onKeyUp($event)" >
+
+
+<!-- her bir key yerine sadece enter için çalışmasını istersek  -->
+<input (keyup.enter)="sadeceEnter()" placeholder="{{tus}}">
+
+
+
+<br>
+
+double way data binding 
+<br>
+
+<!-- [value] ="email" dediğimiz zaman tek taraflı bir bilgi akısı oluyor.
+çift taraflı yapmalıyız bunu.! -->
+<input [value]="email" (keyup.enter)="onKeyUp1()" />
+
+<br>
+<!-- 2 way binding -->
+<input [value]="email" (keyup.enter)="email=$event.target.value; onKeyUp1()" />
+
+<br>
+
+<!-- uzun uzadıya yapmak yerine şöyle yaparsak daha verim alacağız! -->
+<!-- ngModelu eklememiz gerekiyor app modulse -->
+<input [(ngModel)]="email" (keyup.enter)="onKeyUp1()" />
+
+
+
+<!-- today:number=Date.now();
+tittle:string="angular pipes";
+students=21536;
+price:number=395.99;
+completed:number=0.26; -->
+
+
+<h3>PIPES</h3>
+
+<P>{{tittle}}</P>
+
+<P>{{tittle | uppercase }}</P> 
+
+
+<h3>date pipes</h3>
+
+<P>{{today}}</P>
+
+<P>{{today| date}}</P>
+
+<P>{{today| date: 'fullDate'}}</P>
+
+<h3>Decimal Pipes</h3>
+
+<p>{{students}}</p>
+
+<p>{{students | number }} </p>
+
+<p>{{price | number: '1.2-2'}}</p>
+
+<h3>Price pipes</h3>
+
+<p>{{price}}</p>
+
+<p>{{price | currency: 'CAD'}}</p>
+
+
+<h3>custom pipes</h3>
+
+<p>{{text | summary }}</p>   <!-- bu summaryi biz olusturacagız -->
+
+<p>{{text | summary:6 }}</p>   <!-- bu summaryi biz olusturacagız -->
+
+
+
+
+
+
