@@ -138,8 +138,61 @@ completed:number=0.26; -->
 
 <p>{{text | summary:6 }}</p>   <!-- bu summaryi biz olusturacagız -->
 
+<h2>NG IF</h2>
+
+<!-- şimdi varsa gösterilsin yoksa görülmesin istiyoruz bu gibi durumlarda ngIf kullanırız. -->
+
+<div class="bg-warning text-white m-2 p-2" *ngIf="repository.getProduct().length>0">  
+    there are {{repository.getProduct().length }} products in the repository.
+</div>
+
+
+<div class="bg-warning text-white m-2 p-2"  *ngIf="repository.getProduct().length==0">
+    there are no products in the repository.
+</div>
+
+
+<H3>TEMPLATE</H3>
+
+
+<div *ngIf="repository.getProduct().length>0 then exist else none">  
+   
+</div>
+
+<ng-template #exist>
+        <div class="bg-danger text-white m-2 p-2">  
+                there are {{repository.getProduct().length }} products in the repository.
+        </div>
+</ng-template>
+
+<ng-template #none>
+
+        <div class="bg-danger text-white m-2 p-2">
+                there are no products in the repository.
+        </div>
+</ng-template>
+
+<H2>ngSwitch</H2>
+ <!-- EĞER Kİ BU İFADE STRİNG OLSAYDI "' '" ŞEKLİNDE KULLANACAKTIK  -->
+<div class="bg-success m-2 p-2"  [ngSwitch]="repository.getProduct().length">
+
+<span *ngSwitchCase="0" >THERE IS NO PRODUCT</span>
+
+<span *ngSwitchCase="1" >THERE IS 1 PRODUCT</span>
+
+<span *ngSwitchCase="2" >THERE ARE 2 PRODUCT</span>   
+
+<span *ngSwitchDefault >THERE ARE MANY PRODUCT</span>
+</div>
 
 
 
+<h2>ngFor</h2>
 
 
+
+<ul>
+    <li *ngFor="let product of repository.getProduct(); index as i">
+      {{i+1}}   {{product.name}}
+    </li>
+</ul>
