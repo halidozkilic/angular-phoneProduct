@@ -196,3 +196,32 @@ completed:number=0.26; -->
       {{i+1}}   {{product.name}}
     </li>
 </ul>
+
+
+
+<h2>change detection</h2>
+
+
+
+<div class="m-5">
+
+<button class="btn btn-primary" (click)="addProduct()"></button>
+
+        <ul class="list-group mt-2">
+
+                <li *ngFor="let product of repository.getProduct(); index as i">
+                  {{i+1}}   {{product.name}}
+                  <button class="btn btn-danger" (click)="deleteProduct(product)">delete</button>
+                </li>
+               
+        </ul>
+            
+            
+</div>
+
+
+
+
+
+
+

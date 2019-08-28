@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import {ProductRepository} from './repository.model';
-import {Product} from './product.model';import { getLocaleExtraDayPeriodRules, I18nPluralPipe } from '@angular/common';
-;
+import {Product} from './product.model';
+import { getLocaleExtraDayPeriodRules, I18nPluralPipe } from '@angular/common';
+
 
 @Component({
     selector:"app",
@@ -24,10 +25,10 @@ export class ProductComponent {
     getClassMap(id:number): Object{
         let product =this.repository.getProductById(id);
         return{
-            "bg-info":product.price<=1000,
+            /* "bg-info":product.price<=200,
             "bg-secondary": product.price>1000,
-            "text-center text-white":product.name=="Samsung S6"
-        }
+            "text-center text-white":product.name=="Samsung S6" */
+        } 
 
     }
 
@@ -70,7 +71,6 @@ export class ProductComponent {
         this.color="blue";
     }
 
-
     tus:string;
     value:string;
     onKeyUp($event){
@@ -109,6 +109,17 @@ export class ProductComponent {
     completed:number=0.26;
 
     text:string="lorem ipsum dolor sit amet kod vbnre deneme lazım";
+
+
+    addProduct(){
+
+        this.repository.addProduct(new Product(6,"samsung X","baya iyi tel","jpeg",3131));
+
+    }
+
+    deleteProduct(product:Product){
+        this.repository.deleteProduct(product);
+    }
 
 
 }

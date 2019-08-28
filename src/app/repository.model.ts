@@ -22,4 +22,13 @@ export class ProductRepository{
         return this.products.find(p=>p.id==id);
     }
 
+    addProduct(product){
+        this.products.push(product);
+    }
+
+    deleteProduct(product){
+        let index = this.products.indexOf(product);
+        this.products.splice(index,1);
+    }
+
 }
