@@ -142,12 +142,12 @@ completed:number=0.26; -->
 
 <!-- şimdi varsa gösterilsin yoksa görülmesin istiyoruz bu gibi durumlarda ngIf kullanırız. -->
 
-<div class="bg-warning text-white m-2 p-2" *ngIf="repository.getProduct().length>0">  
+<div class="bg-warning text-white m-2 p-2" *ngIf="repository.getProducts().length>0">  
     there are {{repository.getProduct().length }} products in the repository.
 </div>
 
 
-<div class="bg-warning text-white m-2 p-2"  *ngIf="repository.getProduct().length==0">
+<div class="bg-warning text-white m-2 p-2"  *ngIf="repository.getProducts().length==0">
     there are no products in the repository.
 </div>
 
@@ -155,7 +155,7 @@ completed:number=0.26; -->
 <H3>TEMPLATE</H3>
 
 
-<div *ngIf="repository.getProduct().length>0 then exist else none">  
+<div *ngIf="repository.getProducts().length>0 then exist else none">  
    
 </div>
 
@@ -174,7 +174,7 @@ completed:number=0.26; -->
 
 <H2>ngSwitch</H2>
  <!-- EĞER Kİ BU İFADE STRİNG OLSAYDI "' '" ŞEKLİNDE KULLANACAKTIK  -->
-<div class="bg-success m-2 p-2"  [ngSwitch]="repository.getProduct().length">
+<div class="bg-success m-2 p-2"  [ngSwitch]="repository.getProducts().length">
 
 <span *ngSwitchCase="0" >THERE IS NO PRODUCT</span>
 
@@ -192,7 +192,7 @@ completed:number=0.26; -->
 
 
 <ul>
-    <li *ngFor="let product of repository.getProduct(); index as i">
+    <li *ngFor="let product of repository.getProducts(); index as i">
       {{i+1}}   {{product.name}}
     </li>
 </ul>
@@ -209,7 +209,7 @@ completed:number=0.26; -->
 
         <ul class="list-group mt-2">
 
-                <li *ngFor="let product of repository.getProduct(); index as i">
+                <li *ngFor="let product of repository.getProducts(); index as i">
                   {{i+1}}   {{product.name}}
                   <button class="btn btn-danger" (click)="deleteProduct(product)">delete</button>
                 </li>
@@ -227,5 +227,5 @@ completed:number=0.26; -->
 
 
 
-
+<admin-product></admin-product>
 
