@@ -26,9 +26,13 @@ export class ProductRepository{
         this.products.push(product);
     }
 
-    deleteProduct(product){
+    deleteProduct(product:Product){
         let index = this.products.indexOf(product);
         this.products.splice(index,1);
+        /* const  id=product.id;
+        this.products.filter(p=>p.id===product.id);
+        console.log(this.products); */
+
     }
 
 }

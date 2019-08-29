@@ -12,7 +12,7 @@ import { getLocaleExtraDayPeriodRules, I18nPluralPipe } from '@angular/common';
 
 export class ProductComponent {
     repository: ProductRepository = new ProductRepository();
-
+    
     product: Product = this.repository.getProductById(1);
     disable:true;
 

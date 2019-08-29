@@ -16,6 +16,7 @@ import { AdminProductComponent } from './admin-product/admin-product.component';
   imports: [
     BrowserModule,
     FormsModule
+    
   ],
   providers: [],
   bootstrap: [ProductComponent]
